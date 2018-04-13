@@ -94,7 +94,7 @@ $('#plus').click(function () {
       operate();
     }
     input = [0];
-    $('#temp').text(answer);
+    $('#temp').text(answer.toPrecision(8));
     $('#answer').text('0');
   }
   nextOperation = '+';
@@ -110,7 +110,17 @@ $('#multiply').click(function () {
       operate();
     }
     input = [0];
-    $('#temp').text(answer);
+    if (answer > 99999999) {
+      answer = 0;
+      temp = 0;
+      nextOperation = '';
+      input = [0];
+      $('#answer').text(0);
+      $('#temp').text(0);
+      $('#operator').text('');
+      $('#error').text('Max Digit Length Exceeded ');
+    }
+    $('#temp').text(answer.toPrecision(8));
     $('#answer').text('0');
   }
   nextOperation = '*';
@@ -126,7 +136,7 @@ $('#minus').click(function () {
       operate();
     }
     input = [0];
-    $('#temp').text(answer);
+    $('#temp').text(answer.toPrecision(8));
     $('#answer').text('0');
   }
   nextOperation = '-';
@@ -142,7 +152,7 @@ $('#divide').click(function () {
       operate();
     }
     input = [0];
-    $('#temp').text(answer);
+    $('#temp').text(answer.toPrecision(8));
     $('#answer').text('0');
   }
   nextOperation = '/';
@@ -156,7 +166,7 @@ $('#equal').click(function () {
   if (nextOperation === '*') answer *= Number(input.join(''));
   if (nextOperation === '-') answer -= Number(input.join(''));
   if (nextOperation === '/') answer /= Number(input.join(''));
-  $('#answer').text(answer);
+  $('#answer').text(answer.toPrecision(8));
   $('#operator').text('=');
   $('#temp').text('');
   temp = answer;
