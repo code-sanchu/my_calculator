@@ -32,85 +32,59 @@ function equalOpClear() {
   }
 }
 
-$('#1').click(function () {
+function numGeneric(num) {
   equalOpClear();
   if (input.length < 9) {
-    input.push(1);
+    input.push(num);
     $('#answer').text(Number(input.join('')));
     flag = true;
   } else {
     $('#error').text('Max digits');
   }
+}
+
+$('#1').click(function () {
+  numGeneric(1);
 })
 
 $('#2').click(function () {
-  equalOpClear();
-  input.push(2);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+  numGeneric(2);
 })
 
 $('#3').click(function () {
-  equalOpClear();
-  input.push(3);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+  numGeneric(3);
 })
 
 $('#4').click(function () {
-  equalOpClear();
-  input.push(4);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+  numGeneric(4);
 })
 
 $('#5').click(function () {
-  equalOpClear();
-  input.push(5);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+ numGeneric(5);
 })
 
 $('#6').click(function () {
-  equalOpClear();
-  input.push(6);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+  numGeneric(6);
 })
 
 $('#7').click(function () {
-  equalOpClear();
-  input.push(7);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+  numGeneric(7);
 })
 
 $('#8').click(function () {
-  equalOpClear();
-  input.push(8);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+  numGeneric(8);
 })
 
 $('#9').click(function () {
-  equalOpClear();
-  input.push(9);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+  numGeneric(9);
 })
 
 $('#0').click(function () {
-  equalOpClear();
-  input.push(0);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+ numGeneric(0);
 })
 
 $('#point').click(function () {
-  equalOpClear();
-  input.push('.');
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+ numGeneric('.');
 })
 
 $('#plus').click(function () {
@@ -126,6 +100,7 @@ $('#plus').click(function () {
   nextOperation = '+';
   $('#operator').text('+');
   flag = false;
+  flagEqual = false;
 })
 
 $('#multiply').click(function () {
@@ -141,6 +116,7 @@ $('#multiply').click(function () {
   nextOperation = '*';
   $('#operator').text('*');
   flag = false;
+  flagEqual = false;
 })
 
 $('#minus').click(function () {
@@ -156,6 +132,7 @@ $('#minus').click(function () {
   nextOperation = '-';
   $('#operator').text('-');
   flag = false;
+  flagEqual = false;
 })
 
 $('#divide').click(function () {
@@ -171,6 +148,7 @@ $('#divide').click(function () {
   nextOperation = '/';
   $('#operator').text('/');
   flag = false;
+  flagEqual = false;
 })
 
 $('#equal').click(function () {
