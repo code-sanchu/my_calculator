@@ -6,7 +6,8 @@ var input = [];
 var nextOperation = '';
 var temp = 0;
 var answer = 0;
-var flag = false;
+var flag = false; //for changing operator functionality
+var flagEqual = false; //to allow clear when putting number after equal
 
 function operate() {
   if (nextOperation === '+') {
@@ -22,7 +23,20 @@ function operate() {
   }
 }
 
+function equalOpClear() {
+  if (flagEqual) {
+    input = [];
+    temp = 0;
+    answer = 0;
+    nextOperation = '';
+    $('#temp').text(0);
+    $('#operator').text('');
+    flagEqual = false;
+  }
+}
+
 $('#1').click(function () {
+  equalOpClear();
   input.push(1);
   $('#answer').text(Number(input.join('')));
   flag = true;
@@ -152,6 +166,7 @@ $('#equal').click(function () {
   $('#temp').text('');
   temp = answer;
   nextOperation = '=';
+  flagEqual = true;
 })
 
 $('#clear').click(function () {
@@ -162,6 +177,11 @@ $('#clear').click(function () {
   $('#answer').text(0);
   $('#temp').text(0);
   $('#operator').text('');
+})
+
+$('#delete').click(function () {
+  input.pop();
+  $('#answer').text(Number(input.join('')));
 })
 
 // }
