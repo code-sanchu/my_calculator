@@ -2,7 +2,7 @@
 //
 // debugger;
 
-var input = [];
+var input = [0];
 var nextOperation = '';
 var temp = 0;
 var answer = 0;
@@ -25,7 +25,7 @@ function operate() {
 
 function equalOpClear() {
   if (flagEqual) {
-    input = [];
+    input = [0];
     temp = 0;
     answer = 0;
     nextOperation = '';
@@ -43,55 +43,71 @@ $('#1').click(function () {
 })
 
 $('#2').click(function () {
+  equalOpClear();
   input.push(2);
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
 
 $('#3').click(function () {
+  equalOpClear();
   input.push(3);
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
 
 $('#4').click(function () {
+  equalOpClear();
   input.push(4);
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
 
 $('#5').click(function () {
+  equalOpClear();
   input.push(5);
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
 
 $('#6').click(function () {
+  equalOpClear();
   input.push(6);
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
 
 $('#7').click(function () {
+  equalOpClear();
   input.push(7);
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
 
 $('#8').click(function () {
+  equalOpClear();
   input.push(8);
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
 
 $('#9').click(function () {
+  equalOpClear();
   input.push(9);
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
 
 $('#0').click(function () {
+  equalOpClear();
   input.push(0);
+  $('#answer').text(Number(input.join('')));
+  flag = true;
+})
+
+$('#point').click(function () {
+  equalOpClear();
+  input.push('.');
   $('#answer').text(Number(input.join('')));
   flag = true;
 })
@@ -102,7 +118,7 @@ $('#plus').click(function () {
       temp = Number(input.join(''));
       operate();
     }
-    input = [];
+    input = [0];
     $('#temp').text(answer);
     $('#answer').text('0');
   }
@@ -117,7 +133,7 @@ $('#multiply').click(function () {
       temp = Number(input.join(''));
       operate();
     }
-    input = [];
+    input = [0];
     $('#temp').text(answer);
     $('#answer').text('0');
   }
@@ -132,7 +148,7 @@ $('#minus').click(function () {
       temp = Number(input.join(''));
       operate();
     }
-    input = [];
+    input = [0];
     $('#temp').text(answer);
     $('#answer').text('0');
   }
@@ -147,7 +163,7 @@ $('#divide').click(function () {
       temp = Number(input.join(''));
       operate();
     }
-    input = [];
+    input = [0];
     $('#temp').text(answer);
     $('#answer').text('0');
   }
@@ -173,7 +189,7 @@ $('#clear').click(function () {
   answer = 0;
   temp = 0;
   nextOperation = '';
-  input = [];
+  input = [0];
   $('#answer').text(0);
   $('#temp').text(0);
   $('#operator').text('');
@@ -183,5 +199,3 @@ $('#delete').click(function () {
   input.pop();
   $('#answer').text(Number(input.join('')));
 })
-
-// }
