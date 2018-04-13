@@ -45,15 +45,24 @@ button {
 #answer {
   float: right;
   text-align: right;
-  /* width: 70%; */
   margin-right: 20px;
   font-size: 23px;
 }
 
-#temp {
-  
+#botRow {
+
   width: 100%;
+}
+
+#error {
+  margin-left: 10px;
+  float: left;
+}
+
+#temp {
+  float: right;
   text-align: right;
-  margin-right: 20px;
+  margin-left: 198px;
   font-size: 16px;
+
 }

@@ -1,8 +1,5 @@
-// function test () {
-//
-// debugger;
 
-var input = [0];
+var input = [0];//start with zero to avoid decimal point errors
 var nextOperation = '';
 var temp = 0;
 var answer = 0;
@@ -37,9 +34,13 @@ function equalOpClear() {
 
 $('#1').click(function () {
   equalOpClear();
-  input.push(1);
-  $('#answer').text(Number(input.join('')));
-  flag = true;
+  if (input.length < 9) {
+    input.push(1);
+    $('#answer').text(Number(input.join('')));
+    flag = true;
+  } else {
+    $('#error').text('Max digits');
+  }
 })
 
 $('#2').click(function () {
@@ -193,9 +194,11 @@ $('#clear').click(function () {
   $('#answer').text(0);
   $('#temp').text(0);
   $('#operator').text('');
+  $('#error').text('');
 })
 
 $('#delete').click(function () {
   input.pop();
   $('#answer').text(Number(input.join('')));
+  $('#error').text('');
 })
