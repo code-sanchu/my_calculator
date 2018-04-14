@@ -32,6 +32,10 @@ function equalOpClear() {
   }
 }
 
+function tooSmall(x) {
+  if(x > 0 && x < 0.000001) return true;;
+}
+
 function numGeneric(num) {
   equalOpClear();
   if (input.length < 9) {
@@ -94,7 +98,7 @@ $('#plus').click(function () {
       operate();
     }
     input = [0];
-    $('#temp').text(answer.toPrecision(8));
+    $('#temp').text(Number(answer.toPrecision(8)));
     $('#answer').text('0');
   }
   nextOperation = '+';
@@ -110,7 +114,7 @@ $('#multiply').click(function () {
       operate();
     }
     input = [0];
-    if (answer > 99999999) {
+    if (answer.toPrecision(8).length > 9 ) {
       answer = 0;
       temp = 0;
       nextOperation = '';
@@ -120,7 +124,7 @@ $('#multiply').click(function () {
       $('#operator').text('');
       $('#error').text('Max Digit Length Exceeded ');
     }
-    $('#temp').text(answer.toPrecision(8));
+    $('#temp').text(Number(answer.toPrecision(8)));
     $('#answer').text('0');
   }
   nextOperation = '*';
@@ -136,7 +140,7 @@ $('#minus').click(function () {
       operate();
     }
     input = [0];
-    $('#temp').text(answer.toPrecision(8));
+    $('#temp').text(Number(answer.toPrecision(8)));
     $('#answer').text('0');
   }
   nextOperation = '-';
@@ -152,7 +156,7 @@ $('#divide').click(function () {
       operate();
     }
     input = [0];
-    $('#temp').text(answer.toPrecision(8));
+    $('#temp').text(Number(answer.toPrecision(8)));
     $('#answer').text('0');
   }
   nextOperation = '/';
@@ -166,7 +170,7 @@ $('#equal').click(function () {
   if (nextOperation === '*') answer *= Number(input.join(''));
   if (nextOperation === '-') answer -= Number(input.join(''));
   if (nextOperation === '/') answer /= Number(input.join(''));
-  $('#answer').text(answer.toPrecision(8));
+  $('#answer').text(Number(answer.toPrecision(8)));
   $('#operator').text('=');
   $('#temp').text('');
   temp = answer;
