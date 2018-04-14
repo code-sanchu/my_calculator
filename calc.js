@@ -32,8 +32,31 @@ function equalOpClear() {
   }
 }
 
-function tooSmall(x) {
-  if(x > 0 && x < 0.000001) return true;;
+function operatorGeneric(op) {
+  if (flag) {
+    if (nextOperation !== '=') {
+      temp = Number(input.join(''));
+      operate();
+    }
+    input = [0];
+    if (answer.toPrecision(8).length > 9 ) {
+      answer = 0;
+      temp = 0;
+      nextOperation = '';
+      input = [0];
+      $('#answer').text(0);
+      $('#temp').text(0);
+      $('#operator').text('');
+      $('#error').text('Digit Length Err');
+    } else {
+      $('#temp').text(Number(answer.toPrecision(8)));
+      $('#answer').text('0');
+    }
+  }
+  nextOperation = op;
+  $('#operator').text(op);
+  flag = false;
+  flagEqual = false;
 }
 
 function numGeneric(num) {
@@ -92,77 +115,19 @@ $('#point').click(function () {
 })
 
 $('#plus').click(function () {
-  if (flag) {
-    if (nextOperation !== '=') {
-      temp = Number(input.join(''));
-      operate();
-    }
-    input = [0];
-    $('#temp').text(Number(answer.toPrecision(8)));
-    $('#answer').text('0');
-  }
-  nextOperation = '+';
-  $('#operator').text('+');
-  flag = false;
-  flagEqual = false;
+  operatorGeneric('+');
 })
 
 $('#multiply').click(function () {
-  if (flag) {
-    if (nextOperation !== '=') {
-      temp = Number(input.join(''));
-      operate();
-    }
-    input = [0];
-    if (answer.toPrecision(8).length > 9 ) {
-      answer = 0;
-      temp = 0;
-      nextOperation = '';
-      input = [0];
-      $('#answer').text(0);
-      $('#temp').text(0);
-      $('#operator').text('');
-      $('#error').text('Max Digit Length Exceeded ');
-    }
-    $('#temp').text(Number(answer.toPrecision(8)));
-    $('#answer').text('0');
-  }
-  nextOperation = '*';
-  $('#operator').text('*');
-  flag = false;
-  flagEqual = false;
+  operatorGeneric('*');
 })
 
 $('#minus').click(function () {
-  if (flag) {
-    if (nextOperation !== '=') {
-      temp = Number(input.join(''));
-      operate();
-    }
-    input = [0];
-    $('#temp').text(Number(answer.toPrecision(8)));
-    $('#answer').text('0');
-  }
-  nextOperation = '-';
-  $('#operator').text('-');
-  flag = false;
-  flagEqual = false;
+  operatorGeneric('-');
 })
 
 $('#divide').click(function () {
-  if (flag) {
-    if (nextOperation !== '=') {
-      temp = Number(input.join(''));
-      operate();
-    }
-    input = [0];
-    $('#temp').text(Number(answer.toPrecision(8)));
-    $('#answer').text('0');
-  }
-  nextOperation = '/';
-  $('#operator').text('/');
-  flag = false;
-  flagEqual = false;
+  operatorGeneric('/');
 })
 
 $('#equal').click(function () {
