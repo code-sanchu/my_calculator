@@ -39,7 +39,7 @@ function operatorGeneric(op) {
       operate();
     }
     input = [0];
-    if (answer.toPrecision(8).length > 9 ) {
+    if (answer.toPrecision(8).length > 10 ) {
       answer = 0;
       temp = 0;
       nextOperation = '';
@@ -135,7 +135,7 @@ $('#equal').click(function () {
   if (nextOperation === '*') answer *= Number(input.join(''));
   if (nextOperation === '-') answer -= Number(input.join(''));
   if (nextOperation === '/') answer /= Number(input.join(''));
-  if (answer.toPrecision(8).length > 9 ) {
+  if (answer.toPrecision(8).length > 10 ) {
     answer = 0;
     temp = 0;
     nextOperation = '';
@@ -151,7 +151,7 @@ $('#equal').click(function () {
     temp = answer;
     nextOperation = '=';
     flagEqual = true;
-  }  
+  }
 })
 
 $('#clear').click(function () {
