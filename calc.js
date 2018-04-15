@@ -135,12 +135,23 @@ $('#equal').click(function () {
   if (nextOperation === '*') answer *= Number(input.join(''));
   if (nextOperation === '-') answer -= Number(input.join(''));
   if (nextOperation === '/') answer /= Number(input.join(''));
-  $('#answer').text(Number(answer.toPrecision(8)));
-  $('#operator').text('=');
-  $('#temp').text('');
-  temp = answer;
-  nextOperation = '=';
-  flagEqual = true;
+  if (answer.toPrecision(8).length > 9 ) {
+    answer = 0;
+    temp = 0;
+    nextOperation = '';
+    input = [0];
+    $('#answer').text(0);
+    $('#temp').text(0);
+    $('#operator').text('');
+    $('#error').text('Digit Length Err');
+  } else {
+    $('#answer').text(Number(answer.toPrecision(8)));
+    $('#operator').text('=');
+    $('#temp').text('');
+    temp = answer;
+    nextOperation = '=';
+    flagEqual = true;
+  }  
 })
 
 $('#clear').click(function () {
