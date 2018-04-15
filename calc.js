@@ -3,6 +3,7 @@ var input = [0];//start with zero to avoid decimal point errors
 var nextOperation = '';
 var temp = 0;
 var answer = 0;
+var lastButton;
 var flag = false; //for changing operator functionality
 var flagEqual = false; //to allow clear when putting number after equal
 
@@ -15,16 +16,20 @@ function reset() {
   $('#operator').text('');
 }
 
-function equalOpClear() {
-  $('#error').text('');
-  if (flagEqual) {
-    reset();
-    flagEqual = false;
-  }
-}
+// function equalOpClear() {
+//   $('#error').text('');
+//   if (flagEqual) {
+//     reset();
+//     flagEqual = false;
+//   }
+// }
 
 function numGeneric(num) {
-  equalOpClear();//if this number pressed after equals op, reset everything
+  // equalOpClear();//if this number pressed after equals op, reset everything
+  if (lastButton === '=') {
+    $('#error').text('');
+    reset();
+  }
   if (input.length < 9) {
     input.push(num);
     $('#answer').text(Number(input.join('')));
@@ -32,6 +37,7 @@ function numGeneric(num) {
   } else {
     $('#error').text('Max digits');
   }
+  lastButton = num;
 }
 
 function operate() {
@@ -50,7 +56,7 @@ function operate() {
 
 function operatorGeneric(op) {
   $('#error').text('');
-  if (flag) { //i.e. was a number inputted last
+  if (typeof lastButton === 'number' || lastButton === '=') { //i.e. was a number inputted last
     if (nextOperation !== '=') {
       temp = Number(input.join(''));
       operate();
@@ -67,6 +73,7 @@ function operatorGeneric(op) {
   }
   nextOperation = op;
   $('#operator').text(op);
+  lastButton = op;
   flag = false;
   flagEqual = false;
 }
@@ -148,6 +155,7 @@ $('#equal').click(function () {
     $('#temp').text('');
     temp = answer;
     nextOperation = '=';
+    lastButton = '=';
     flagEqual = true;
   }
 })

@@ -10,46 +10,45 @@
   </head>
   <body>
     <div class="container">
-      <h1>Javascript Calculator</h1>
       <div class="calc">
-        <div class="row">
-          <button type="button" class="btn btn-default" id="1">1</button>
-          <button type="button" class="btn btn-default" id="2">2</button>
-          <button type="button" class="btn btn-default" id="3">3</button>
-        </div>
-        <div class="row">
-          <button type="button" class="btn btn-default" id="4">4</button>
-          <button type="button" class="btn btn-default" id="5">5</button>
-          <button type="button" class="btn btn-default" id="6">6</button>
-        </div>
-        <div class="row">
-          <button type="button" class="btn btn-default" id="7">7</button>
-          <button type="button" class="btn btn-default" id="8">8</button>
-          <button type="button" class="btn btn-default" id="9">9</button>
-        </div>
-        <div class="row">
-          <button type="button" class="btn btn-default" id="minus">-</button>
-          <button type="button" class="btn btn-default" id="0">0</button>
-          <button type="button" class="btn btn-default" id="divide">/</button>
-        </div>
-        <div class="row">
-          <button type="button" class="btn btn-default" id="plus">+</button>
-          <button type="button" class="btn btn-default" id="multiply">*</button>
-          <button type="button" class="btn btn-default" id="equal">=</button>
-        </div>
-        <div class="row">
-          <button type="button" class="btn btn-default" id="clear">AC</button>
-          <button type="button" class="btn btn-default" id="point">.</button>
-          <button type="button" class="btn btn-default" id="delete">CE</button>
-        </div>
-        <div class="row output">
-          <div class="another">
+        <div class="display">
+          <div id="main-display-row">
             <div id='operator'></div>
             <div id="answer">0</div>
           </div>
-          <div class="botRow">
+          <div id="sub-display-row">
             <div id='error'></div>
             <div id="temp">0</div>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="row">
+            <button type="button" class="btn btn-default" id="1">1</button>
+            <button type="button" class="btn btn-default" id="2">2</button>
+            <button type="button" class="btn btn-default" id="3">3</button>
+            <button type="button" class="btn btn-default" id="plus">+</button>
+          </div>
+          <div class="row">
+            <button type="button" class="btn btn-default" id="4">4</button>
+            <button type="button" class="btn btn-default" id="5">5</button>
+            <button type="button" class="btn btn-default" id="6">6</button>
+            <button type="button" class="btn btn-default" id="minus">-</button>
+          </div>
+          <div class="row">
+            <button type="button" class="btn btn-default" id="7">7</button>
+            <button type="button" class="btn btn-default" id="8">8</button>
+            <button type="button" class="btn btn-default" id="9">9</button>
+            <button type="button" class="btn btn-default" id="multiply">*</button>
+          </div>
+          <div class="row">
+            <button type="button" class="btn btn-default" id="point">.</button>
+            <button type="button" class="btn btn-default" id="0">0</button>
+            <button type="button" class="btn btn-default" id="equal">=</button>
+            <button type="button" class="btn btn-default" id="divide">/</button>             
+          </div>
+          <div class="row">
+            <button type="button" class="btn btn-default" id="clear">AC</button>
+            <button type="button" class="btn btn-default" id="delete">CE</button>
           </div>
         </div>
       </div>
