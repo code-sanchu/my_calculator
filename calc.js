@@ -6,6 +6,34 @@ var answer = 0;
 var flag = false; //for changing operator functionality
 var flagEqual = false; //to allow clear when putting number after equal
 
+function reset() {
+  input = [0];
+  temp = 0;
+  answer = 0;
+  nextOperation = '';
+  $('#temp').text(0);
+  $('#operator').text('');
+}
+
+function equalOpClear() {
+  $('#error').text('');
+  if (flagEqual) {
+    reset();
+    flagEqual = false;
+  }
+}
+
+function numGeneric(num) {
+  equalOpClear();//if this number pressed after equals op, reset everything
+  if (input.length < 9) {
+    input.push(num);
+    $('#answer').text(Number(input.join('')));
+    flag = true;
+  } else {
+    $('#error').text('Max digits');
+  }
+}
+
 function operate() {
   if (nextOperation === '+') {
     answer += temp;
@@ -20,33 +48,17 @@ function operate() {
   }
 }
 
-function equalOpClear() {
-  if (flagEqual) {
-    input = [0];
-    temp = 0;
-    answer = 0;
-    nextOperation = '';
-    $('#temp').text(0);
-    $('#operator').text('');
-    flagEqual = false;
-  }
-}
-
 function operatorGeneric(op) {
-  if (flag) {
+  $('#error').text('');
+  if (flag) { //i.e. was a number inputted last
     if (nextOperation !== '=') {
       temp = Number(input.join(''));
       operate();
     }
     input = [0];
     if (answer.toPrecision(8).length > 10 ) {
-      answer = 0;
-      temp = 0;
-      nextOperation = '';
-      input = [0];
+      reset();
       $('#answer').text(0);
-      $('#temp').text(0);
-      $('#operator').text('');
       $('#error').text('Digit Length Err');
     } else {
       $('#temp').text(Number(answer.toPrecision(8)));
@@ -57,17 +69,6 @@ function operatorGeneric(op) {
   $('#operator').text(op);
   flag = false;
   flagEqual = false;
-}
-
-function numGeneric(num) {
-  equalOpClear();
-  if (input.length < 9) {
-    input.push(num);
-    $('#answer').text(Number(input.join('')));
-    flag = true;
-  } else {
-    $('#error').text('Max digits');
-  }
 }
 
 $('#1').click(function () {
@@ -131,18 +132,15 @@ $('#divide').click(function () {
 })
 
 $('#equal').click(function () {
+  $('#error').text('');
   if (nextOperation === '+') answer += Number(input.join(''));
   if (nextOperation === '*') answer *= Number(input.join(''));
   if (nextOperation === '-') answer -= Number(input.join(''));
   if (nextOperation === '/') answer /= Number(input.join(''));
+  if (!nextOperation) answer = Number(input.join(''));
   if (answer.toPrecision(8).length > 10 ) {
-    answer = 0;
-    temp = 0;
-    nextOperation = '';
-    input = [0];
+    reset();
     $('#answer').text(0);
-    $('#temp').text(0);
-    $('#operator').text('');
     $('#error').text('Digit Length Err');
   } else {
     $('#answer').text(Number(answer.toPrecision(8)));
@@ -155,13 +153,8 @@ $('#equal').click(function () {
 })
 
 $('#clear').click(function () {
-  answer = 0;
-  temp = 0;
-  nextOperation = '';
-  input = [0];
+  reset();
   $('#answer').text(0);
-  $('#temp').text(0);
-  $('#operator').text('');
   $('#error').text('');
 })
 
