@@ -44,24 +44,25 @@ function operate() {
 
 function operatorGeneric(op) {
   $('#error').text('');
-  if (typeof lastButton === 'number' || lastButton === '=' || lastButton === '.') { 
+  if (typeof lastButton === 'number' || lastButton === '=' || lastButton === '.') {
     if (nextOperation !== '=') {
       temp = Number(input.join(''));
       operate();
     }
     input = [0];
-    if (answer.toPrecision(8).length > 10 ) {
+    if (answer.toPrecision(8).length > 10 ) {//>10 to allow for negative numbers
       reset();
+      lastButton = undefined;
       $('#answer').text(0);
       $('#error').text('Digit Length Err');
     } else {
       $('#temp').text(Number(answer.toPrecision(8)));
       $('#answer').text('0');
+      nextOperation = op;
+      $('#operator').text(op);
+      lastButton = op;
     }
   }
-  nextOperation = op;
-  $('#operator').text(op);
-  lastButton = op;
 }
 
 $('#1').click(function () {
@@ -156,4 +157,23 @@ $('#delete').click(function () {
   input.pop();
   $('#answer').text(Number(input.join('')));
   $('#error').text('');
+})
+
+
+//******functionality box**********
+var flag = true;
+
+$('#arrow').click(function () {
+  if (flag) {
+    $('#blurb').slideDown(600, function () {
+      $('#arrow').toggleClass('fa-sort-down fa-sort-up');
+    });
+    flag = false;
+  } else {
+    $('#blurb').slideUp(400, function () {
+      $('#arrow').toggleClass('fa-sort-down fa-sort-up');
+    });
+    flag = true;
+  }
+
 })

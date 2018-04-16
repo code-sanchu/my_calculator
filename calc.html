@@ -4,54 +4,70 @@
     <meta charset="utf-8">
     <title>Javascript Calculator</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="calc.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://unpkg.com/mathjs@4.1.1/dist/math.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>     
   </head>
   <body>
-    <div class="container">
-      <div class="calc">
-        <div class="display">
-          <div id="main-display-row">
-            <div id='operator'></div>
-            <div id="answer">0</div>
-          </div>
-          <div id="sub-display-row">
-            <div id='error'></div>
-            <div id="temp">0</div>
-          </div>
-        </div>
-        <div class="buttons">
-          <div class="row">
-            <button type="button" class="btn btn-default" id="1">1</button>
-            <button type="button" class="btn btn-default" id="2">2</button>
-            <button type="button" class="btn btn-default" id="3">3</button>
-            <button type="button" class="btn btn-default" id="plus">+</button>
-          </div>
-          <div class="row">
-            <button type="button" class="btn btn-default" id="4">4</button>
-            <button type="button" class="btn btn-default" id="5">5</button>
-            <button type="button" class="btn btn-default" id="6">6</button>
-            <button type="button" class="btn btn-default" id="minus">-</button>
-          </div>
-          <div class="row">
-            <button type="button" class="btn btn-default" id="7">7</button>
-            <button type="button" class="btn btn-default" id="8">8</button>
-            <button type="button" class="btn btn-default" id="9">9</button>
-            <button type="button" class="btn btn-default" id="multiply">*</button>
-          </div>
-          <div class="row">
-            <button type="button" class="btn btn-default" id="point">.</button>
-            <button type="button" class="btn btn-default" id="0">0</button>
-            <button type="button" class="btn btn-default" id="equal">=</button>
-            <button type="button" class="btn btn-default" id="divide">/</button>             
-          </div>
-          <div class="row">
-            <button type="button" class="btn btn-default" id="clear">AC</button>
-            <button type="button" class="btn btn-default" id="delete">CE</button>
-          </div>
+    <div class="calc">
+      <div class="left-box">
+        <div class="read-me">Functionality <i id="arrow" class="fas fa-sort-down"></i></div>
+        <div id= "blurb">
+          <a>This calculator is non-scientific</a> <br />
+          <br />
+          <a class="point"><i class="fas fa-angle-right"></i>takes max 8 digits as number input, including a decimal point</a>
+          <a class="point"><i class="fas fa-angle-right"></i>only answer with an absolute value 8 sig figures and less accepted</a>
+          <a class="point"><i class="fas fa-angle-right"></i>decimal number answers will be rounded to the 8th digit if greater than 8 digits</a>
+          <a class="point"><i class="fas fa-angle-right"></i>negative numbers accepted but no direct way to input them</a>
+          <a class="point"><i class="fas fa-angle-right"></i>errors reset the calculator</a>
+          <a class="point"><i class="fas fa-angle-right"></i>operators can be changed</a>
+          <a class="point"><i class="fas fa-angle-right"></i>operations can be chained</a>
+          <a class="point"><i class="fas fa-angle-right"></i>zeros inputted but not preceeded by any other number will function but won't be displayed (sorry have to move on)</a>
         </div>
       </div>
+      <div class="display">
+        <div id="main-display-row">
+          <div id='operator'></div>
+          <div id="answer">0</div>
+        </div>
+        <div id="sub-display-row">
+          <div id='error'></div>
+          <div id="temp">0</div>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="row">
+          <button type="button" class="btn btn-default" id="1">1</button>
+          <button type="button" class="btn btn-default" id="2">2</button>
+          <button type="button" class="btn btn-default" id="3">3</button>
+          <button type="button" class="btn btn-default" id="plus">+</button>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-default" id="4">4</button>
+          <button type="button" class="btn btn-default" id="5">5</button>
+          <button type="button" class="btn btn-default" id="6">6</button>
+          <button type="button" class="btn btn-default" id="minus">-</button>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-default" id="7">7</button>
+          <button type="button" class="btn btn-default" id="8">8</button>
+          <button type="button" class="btn btn-default" id="9">9</button>
+          <button type="button" class="btn btn-default" id="multiply">*</button>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-default" id="point">.</button>
+          <button type="button" class="btn btn-default" id="0">0</button>
+          <button type="button" class="btn btn-default" id="equal">=</button>
+          <button type="button" class="btn btn-default" id="divide">/</button>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-default" id="clear">AC</button>
+          <button type="button" class="btn btn-default" id="delete">CE</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <a>Designed and coded by Ruben Seveelaventhan</a>
     </div>
   <script type="text/javascript" src="calc.js"></script>
   </body>
