@@ -65,65 +65,31 @@ function operatorGeneric(op) {
   }
 }
 
-$('#1').click(function () {
-  numGeneric(1);
-})
+var buttonArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, '.', 0];
 
-$('#2').click(function () {
-  numGeneric(2);
-})
+for (let i = 0; i < $('.number').length; i++) {
 
-$('#3').click(function () {
-  numGeneric(3);
-})
+  $('.number:eq(' + i + ')').click(function () {  
+    numGeneric(buttonArr[i]);
+  });
+  
+}
 
-$('#4').click(function () {
-  numGeneric(4);
-})
+// for (let i = 0; i < 10; i++) {
+//   $('#' + i.toString()).click(function () {
+//     numGeneric(i);
+//   })
+// }
 
-$('#5').click(function () {
- numGeneric(5);
-})
+var xps = ['+', '-', '*', '/'];
 
-$('#6').click(function () {
-  numGeneric(6);
-})
+for (let i = 0; i < $('.operator').length; i++) {
+  
+  $('.operator:eq(' + i + ')').click(function () {    
+    operatorGeneric(xps[i]);
+  })
 
-$('#7').click(function () {
-  numGeneric(7);
-})
-
-$('#8').click(function () {
-  numGeneric(8);
-})
-
-$('#9').click(function () {
-  numGeneric(9);
-})
-
-$('#0').click(function () {
- numGeneric(0);
-})
-
-$('#point').click(function () {
- numGeneric('.');
-})
-
-$('#plus').click(function () {
-  operatorGeneric('+');
-})
-
-$('#multiply').click(function () {
-  operatorGeneric('*');
-})
-
-$('#minus').click(function () {
-  operatorGeneric('-');
-})
-
-$('#divide').click(function () {
-  operatorGeneric('/');
-})
+}
 
 $('#equal').click(function () {
   $('#error').text('');
